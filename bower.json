@@ -1,0 +1,40 @@
+{
+  "name": "lcbweb",
+  "version": "0.1.0",
+  "dependencies": {
+    "jquery": "^3.1.0",
+    "bootstrap-sass": "^3.3.7",
+    "components-font-awesome": "^4.6.3",
+    "compass-mixins": "^1.0.2",
+    "sass-mediaqueries": "^1.6.1",
+    "angular": "^1.5.8",
+    "angular-animate": "^1.5.8",
+    "angular-touch": "^1.5.8",
+    "angular-bootstrap": "^2.0.0",
+    "angular-base64-upload": "^0.1.19",
+    "lodash": "^4.14.0",
+    "angular-sanitize": "^1.5.8",
+    "angular-ui-router": "^0.3.1",
+    "angular-block-ui": "^0.2.2",
+    "angular-dialog-service": "^5.3.0",
+    "angular-cookies": "^1.5.8",
+    "ngstorage": "^0.3.11",
+    "ng-prettyjson": "^0.2.0",
+    "angular-translate": "^2.11.1",
+    "angular-json-editor": "^0.2.1",
+    "moment": "^2.14.1",
+    "angular-datetime": "^3.2.2",
+    "leaflet": "^1.0.1",
+    "Leaflet.ChineseTmsProviders": "https://github.com/htoooth/Leaflet.ChineseTmsProviders.git",
+    "leaflet-providers": "^1.1.15",
+    "angular-prompt": "^1.2.0",
+    "checklist-model": "^0.10.0"
+  },
+  "appPath": "assets",
+  "moduleName": "lcbweb",
+  "resolutions": {
+    "angular-bootstrap": "^2.0.0",
+    "angular": "^1.5.8",
+    "leaflet": "^1.0.1"
+  }
+}

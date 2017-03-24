@@ -1,0 +1,16 @@
+@import "styles/variables";
+@import "styles/mixins";
+@import "styles/media";
+@import "styles/icons";
+
+@import "bower_components/angular-block-ui/dist/angular-block-ui";
+@import "bower_components/angular-dialog-service/dist/dialogs.css";
+@import "bower_components/ng-prettyjson/dist/ng-prettyjson.min.css";
+
+html * {
+  font-family: "PingFang SC", "Helvetica Neue", "Helvetica", "Arial", "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+}
+
+.lcb-red {
+  color: red;
+}

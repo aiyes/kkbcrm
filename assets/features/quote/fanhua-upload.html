@@ -1,0 +1,16 @@
+<div class="modal-header">
+  <button type="button" class="close" ng-click="ctrl.no()">&times;</button>
+  <h4 class="modal-title">补充材料</h4>
+</div>
+<div class="modal-body">
+  <div class="row">
+    <div class="col-sm-4 col-xs-6" ng-repeat="image in ctrl.data.missingImages">
+      <h5>{{image.imageName}}</h5><img src="/static/images/icon_add.png" class="img-responsive">
+      <input type="file" accept="image/*" ng-model='ctrl.images[image.imageType]' lcb-file-uploader lcb-file-use-src="true">
+    </div>
+  </div>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-default" ng-click="ctrl.no()">取消</button>
+  <button type="button" class="btn btn-primary" ng-click="ctrl.yes()">确定</button>
+</div>

@@ -1,0 +1,79 @@
+#bihu {
+
+  padding: 30px 0;
+
+  #selection {
+
+    input[type="checkbox"] {
+      //transform: scale(1.5, 1.5);
+      font-size: 50px;
+    }
+
+    h3 {
+      line-height: 30px;
+    }
+
+    hr {
+      margin: 10px 0;
+    }
+
+    table {
+
+      width: auto;
+
+      tr.lcb-summary {
+        background-color: lightyellow;
+        td:first-child {
+          font-weight: bold;
+        }
+      }
+
+      tr {
+        > td:first-child {
+          width: 150px;
+          min-width: 150px;
+        }
+        > td:nth-child(2) {
+          width: 150px;
+          min-width: 150px;
+          text-align: center;
+        }
+        > td:nth-child(3) {
+          width: 70px;
+          text-align: center;
+        }
+      }
+
+      td, th {
+        vertical-align: middle;
+        height: 55px;
+      }
+      
+      th {
+        text-align: center;
+        &:first-child {
+          text-align: left;
+        }
+      }
+
+      pre.pretty-json, pre {
+        background: transparent;
+        border: none;
+        outline: none;
+      }
+
+      td {
+        .lcb-json-table {
+          border-bottom: 1px solid lightgray;
+          padding: 5px;
+        }
+        .lcb-json-table:last-child {
+          border-bottom: none;
+        }
+      }
+
+    }
+
+  }
+
+}

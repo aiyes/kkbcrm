@@ -1,0 +1,95 @@
+'use strict';
+
+export var zh_CN = {
+
+  DIALOGS_ERROR: '错误',
+  DIALOGS_ERROR_MSG: '出现未知错误。',
+  DIALOGS_CLOSE: '关闭',
+  DIALOGS_PLEASE_WAIT: '请稍候',
+  DIALOGS_PLEASE_WAIT_ELIPS: '请稍候...',
+  DIALOGS_PLEASE_WAIT_MSG: '请等待操作完成。',
+  DIALOGS_PERCENT_COMPLETE: '% 已完成',
+  DIALOGS_NOTIFICATION: '通知',
+  DIALOGS_NOTIFICATION_MSG: '未知应用程序的通知。',
+  DIALOGS_CONFIRMATION: '确认',
+  DIALOGS_CONFIRMATION_MSG: '确认要求。',
+  DIALOGS_OK: '确定',
+  DIALOGS_YES: '确认',
+  DIALOGS_NO: '取消',
+
+  city_code: '投保城市',
+  license_no: '车牌号',
+  license_owner: '车主姓名',
+  frame_no: '车架号',
+  engine_no: '发动机号',
+  vehicle_name: '品牌型号',
+  enroll_date: '初次登记日期',
+  seat_count: '座位数',
+
+  biz_start_date: '商业险起保日期',
+  force_start_date: '交强险起保日期',
+
+  force: '交强险',
+  tax: '车船税',
+  damage: '机动车损失险',
+  deduction: '车损绝对免赔额',
+  third: '第三者责任险',
+  driver: '司机险',
+  passenger: '乘客险',
+  pilfer: '盗抢险',
+  glass: '玻璃险',
+  scratch: '划痕险',
+  combust: '自燃险',
+  water: '涉水险',
+  third_party: '机动车损失险',
+  equipment: '新增设备损失险',
+  repair: '修理期间费用补偿',
+  spirit: '精神损害抚慰金',
+  cargo: '车上货物责任险',
+
+  exempt_damage: '机动车损失险（不计免赔）',
+  exempt_third: '第三者责任险（不计免赔）',
+  exempt_driver: '司机险（不计免赔）',
+  exempt_passenger: '乘客险（不计免赔）',
+  exempt_pilfer: '盗抢险（不计免赔）',
+  exempt_combust: '自燃险（不计免赔）',
+  exempt_scratch: '划痕险（不计免赔）',
+  exempt_water: '涉水险（不计免赔）',
+  exempt_equipment: '新增设备损失险（不计免赔）',
+  exempt_spirit: '精神损害抚慰金（不计免赔）',
+
+  quote_result: {
+
+    premium: '保费',
+    ncfPremium: '不计免赔保费',
+    notDeductible: '不计免赔',
+    startDate: '起保日期',
+    endDate: '终保日期',
+    tax: '车船税',
+    taxFee: '车船税金额',
+    lateFee: '车船税滞纳金',
+    discountRate: '交强险折扣率',
+
+    start_date: '开始时间',
+    end_date: '结束时间',
+    total: '合计',
+    insured: '投保',
+    amount: '保额',
+    valid: '有效报价',
+    original: '原价',
+    biz_total: '商业险报价',
+    biz_original: '商业险原价',
+    force_total: '交强险报价',
+    force_original: '交强险原价',
+    total_cent: '总金额',
+    loss_time: '出险时间',
+    end_time: '结案时间',
+    loss_fee: '理赔金额',
+    company: '公司',
+
+    BaoE: '保额',
+    BaoFei: '保费'
+
+  }
+
+};

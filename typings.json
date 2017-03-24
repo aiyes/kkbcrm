@@ -1,0 +1,13 @@
+{
+  "globalDependencies": {
+    "angular": "registry:dt/angular#1.5.0+20160725073351",
+    "angular-dialog-service": "registry:dt/angular-dialog-service#5.2.8+20160317120654",
+    "angular-translate": "registry:dt/angular-translate#2.4.0+20160729132354",
+    "angular-ui-bootstrap": "registry:dt/angular-ui-bootstrap#0.13.3+20160705221453",
+    "angular-ui-router": "registry:dt/angular-ui-router#1.1.5+20160707113237",
+    "jquery": "registry:dt/jquery#1.10.0+20160704162008",
+    "lodash": "registry:global/lodash#4.0.0+20160723033700",
+    "moment": "registry:dt/moment#2.8.0+20160316155526",
+    "moment-node": "registry:dt/moment-node#2.11.1+20160511043338"
+  }
+}

@@ -1,0 +1,51 @@
+<div id="trip">
+
+  <form id="query" name="queryForm" class="form-inline text-nowrap" novalidate>
+    <div class="form-group">
+      <label>渠道</label>
+      <select ng-model="ctrl.query.partner" ng-options="id as partner for (id , partner) in ctrl.partners" class="form-control" required>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>CID</label>
+      <input ng-model="ctrl.query.cid" type="text" class="form-control" required>
+    </div>
+    <div class="form-group">
+      <label>日期</label>
+      <input type="date" ng-model="ctrl.query.date" class="form-control" required>
+      <!--input ng-model="ctrl.query.date" datetime="yyyy-MM-dd" datetime-model="yyyy-MM-dd" type="text" class="form-control" required-->
+    </div>
+    <button class="btn btn-default" ng-disabled="queryForm.$invalid" ng-click="ctrl.search()">查询</button>
+  </form>
+
+  <div id="result" class="row">
+    <div class="col-sm-3">
+      <div class="alert alert-info" ng-if="ctrl.lcbUtils.isEmpty(ctrl.trips)">没有行程</div>
+      <div id="list">
+        <table ng-repeat="trip in ctrl.trips" class="table table-bordered" ng-class="{ selected: ctrl.isSelected(trip) }" ng-click="ctrl.renderTrip(trip);">
+          <tr>
+            <th>TripID：</th><td colspan="3">{{trip.id}}</td>
+          </tr>
+          <tr>
+            <th>开始时间：</th><td>{{trip.start_epoch_time}}</td><th>结束时间：</th><td>{{trip.end_epoch_time}}</td>
+          </tr>
+          <tr>
+            <th>起点：</th><td>{{trip.start_loc_name}}</td><th>终点：</th><td>{{trip.end_loc_name}}</td>
+          </tr>
+          <tr>
+            <th>里程：</th><td>{{trip.distance}}</td><th>时长：</th><td>{{trip.duration}}</td>
+          </tr>
+          <tr>
+            <th>最高速度：</th><td></td><th>平均速度：</th><td></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="col-sm-9">
+      <div id="map"></div>
+    </div>
+  </div>
+
+
+
+</div>

@@ -1,0 +1,320 @@
+<div class="container">
+
+  <form id="quote" class="form-horizontal">
+
+    <div id="config">
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="city" class="col-sm-5 control-label">投保城市</label>
+            <div class="col-sm-7">
+              <select id="city" ng-options="city.code as city.name disable when city.province for city in ctrl.supportCities" ng-model="ctrl.quote.vehicle.city_code" class="form-control">
+                <option value="">请选择投保城市</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="license_no" class="col-sm-5 control-label">车牌号</label>
+            <div class="col-sm-7">
+              <input id="license_no" ng-model="ctrl.quote.vehicle.license_no" type="text" class="form-control" placeholder="车牌号">
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="license_owner" class="col-sm-5 control-label">车主姓名</label>
+            <div class="col-sm-7">
+              <input id="license_owner" ng-model="ctrl.quote.vehicle.license_owner" type="text" class="form-control" placeholder="车主姓名">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="frame_no" class="col-sm-5 control-label">车架号</label>
+            <div class="col-sm-7">
+              <input id="frame_no" ng-model="ctrl.quote.vehicle.frame_no" type="text" class="form-control" placeholder="车架号" uib-tooltip="必须大写">
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="engine_no" class="col-sm-5 control-label">发动机号</label>
+            <div class="col-sm-7">
+              <input id="engine_no" ng-model="ctrl.quote.vehicle.engine_no" type="text" class="form-control" placeholder="发动机号">
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="vehicle_name" class="col-sm-5 control-label">品牌型号</label>
+            <div class="col-sm-7">
+              <input id="vehicle_name" ng-model="ctrl.quote.vehicle.vehicle_name" type="text" class="form-control" placeholder="品牌型号">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="enroll_date" class="col-sm-5 control-label">初次登记日期</label>
+            <div class="col-sm-7">
+              <input id="enroll_date" ng-model="ctrl.quote.vehicle.enroll_date" datetime="yyyy-MM-dd" datetime-model="yyyy-MM-dd" type="text" class="form-control" placeholder="初次登记日期">
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="seat_count" class="col-sm-5 control-label">座位数</label>
+            <div class="col-sm-7">
+              <input id="seat_count" ng-model="ctrl.quote.vehicle.seat_count" type="number" class="form-control" placeholder="座位数">
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="biz_start_date" class="col-sm-5 control-label">商业险起保日期</label>
+            <div class="col-sm-7">
+              <input id="biz_start_date" ng-model="ctrl.quote.options.biz_start_date" datetime="yyyy-MM-dd" datetime-model="yyyy-MM-dd" type="text" class="form-control" placeholder="商业险起保日期" uib-tooltip="除非明确知道商业险起保日期，否则不建议传">
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="force_start_date" class="col-sm-5 control-label">交强险起保日期</label>
+            <div class="col-sm-7">
+              <input id="force_start_date" ng-model="ctrl.quote.options.force_start_date" datetime="yyyy-MM-dd" datetime-model="yyyy-MM-dd" type="text" class="form-control" placeholder="交强险起保日期" uib-tooltip="始终不建议传">
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+
+        </div>
+      </div>
+    </div>
+
+    <div id="selection" class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title pull-left">保险配置</h3>
+        <button class="btn btn-primary pull-right" type="button" ng-click="ctrl.createQuote()" ng-disabled="ctrl.cantQuote()">提交</button>
+        <div class="clearfix"></div>
+      </div>
+      <div class="panel-body">
+
+        <table class="table table-bordered">
+          <thead>
+            <tr class="text-nowrap">
+              <th>险种</th>
+              <th></th>
+              <th>不记免赔</th>
+              <th ng-repeat="(supplier, value) in ctrl.result">{{supplier}}</th>
+            </tr>
+            <tr class="lcb-summary">
+              <td>状态</td>
+              <td></td>
+              <td></td>
+              <td ng-repeat="(supplier, value) in ctrl.result">{{ctrl.getMessage(value)}}</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>交强险</td>
+              <td><input id="force" ng-model="ctrl.quote.selection.force" type="checkbox"></td>
+              <td></td>
+              <td ng-repeat="(supplier, value) in ctrl.result"><lcb-json-table json="value.data.force_info"></lcb-json-table></td>
+            </tr>
+            <!--tr>
+              <td>车船税</td>
+              <td><input id="tax" ng-model="ctrl.quote.selection.tax" type="checkbox"></td>
+              <td></td>
+              <td ng-repeat="(supplier, value) in ctrl.result"><pre pretty-json="ctrl.getQuoteDetail(value.data, 'tax')"></pre></td>
+            </tr-->
+            <tr class="lcb-summary">
+              <td>商业险合计</td>
+              <td></td>
+              <td></td>
+              <td ng-repeat="(supplier, value) in ctrl.result"><lcb-json-table json="ctrl.getBizInfo(value.data)"></lcb-json-table></td>
+            </tr>
+            <tr>
+              <td>机动车损失险</td>
+              <td><input id="damage" ng-model="ctrl.quote.selection.damage" type="checkbox"></td>
+              <td><input id="exempt_damage" ng-model="ctrl.quote.selection.exempt_damage" type="checkbox"></td>
+              <td ng-repeat="(supplier, value) in ctrl.result"><lcb-json-table json="ctrl.getQuoteDetail(value.data, 'damage')"></lcb-json-table><lcb-json-table json="ctrl.getQuoteDetail(value.data, 'exempt_damage')"></lcb-json-table></td>
+            </tr>
+            <tr>
+              <td>机动车损失无法找到第三方特约险</td>
+              <td>
+                <input id="third_party" ng-model="ctrl.quote.selection.third_party" type="checkbox">
+              </td>
+              <td></td>
+              <td ng-repeat="(supplier, value) in ctrl.result"><lcb-json-table json="ctrl.getQuoteDetail(value.data, 'third_party')"></lcb-json-table></td>
+            </tr>
+            <tr>
+              <td>第三者责任险</td>
+              <td>
+                <select id="third" ng-model="ctrl.quote.selection.third" class="form-control">
+                  <option value="">不投保</option>
+                  <option>100000</option>
+                  <option>200000</option>
+                  <option>300000</option>
+                  <option>500000</option>
+                  <option>1000000</option>
+                  <option>2000000</option>
+                </select>
+              </td>
+              <td><input id="exempt_third" ng-model="ctrl.quote.selection.exempt_third" type="checkbox"></td>
+              <td ng-repeat="(supplier, value) in ctrl.result"><lcb-json-table json="ctrl.getQuoteDetail(value.data, 'third')"></lcb-json-table><lcb-json-table json="ctrl.getQuoteDetail(value.data, 'exempt_third')"></lcb-json-table></td>
+            </tr>
+            <tr>
+              <td>司机险</td>
+              <td>
+                <select id="driver" ng-model="ctrl.quote.selection.driver" class="form-control">
+                  <option value="">不投保</option>
+                  <option>10000</option>
+                  <option>20000</option>
+                  <option>30000</option>
+                  <option>50000</option>
+                  <option>100000</option>
+                  <option>200000</option>
+                </select>
+              </td>
+              <td><input id="exempt_driver" ng-model="ctrl.quote.selection.exempt_driver" type="checkbox"></td>
+              <td ng-repeat="(supplier, value) in ctrl.result"><lcb-json-table json="ctrl.getQuoteDetail(value.data, 'driver')"></lcb-json-table><lcb-json-table json="ctrl.getQuoteDetail(value.data, 'exempt_driver')"></lcb-json-table></td>
+            </tr>
+            <tr>
+              <td>乘客险</td>
+              <td>
+                <select id="passenger" ng-model="ctrl.quote.selection.passenger" class="form-control">
+                  <option value="">不投保</option>
+                  <option>10000</option>
+                  <option>20000</option>
+                  <option>30000</option>
+                  <option>50000</option>
+                  <option>100000</option>
+                  <option>200000</option>
+                </select>
+              </td>
+              <td><input id="exempt_passenger" ng-model="ctrl.quote.selection.exempt_passenger" type="checkbox"></td>
+              <td ng-repeat="(supplier, value) in ctrl.result"><lcb-json-table json="ctrl.getQuoteDetail(value.data, 'passenger')"></lcb-json-table><lcb-json-table json="ctrl.getQuoteDetail(value.data, 'exempt_passenger')"></lcb-json-table></td>
+            </tr>
+            <tr>
+              <td>盗抢险</td>
+              <td><input id="pilfer" ng-model="ctrl.quote.selection.pilfer" type="checkbox"></td>
+              <td><input id="exempt_pilfer" ng-model="ctrl.quote.selection.exempt_pilfer" type="checkbox"></td>
+              <td ng-repeat="(supplier, value) in ctrl.result"><lcb-json-table json="ctrl.getQuoteDetail(value.data, 'pilfer')"></lcb-json-table><lcb-json-table json="ctrl.getQuoteDetail(value.data, 'exempt_pilfer')"></lcb-json-table></td>
+            </tr>
+            <tr>
+              <td>玻璃险</td>
+              <td>
+                <select id="glass" ng-model="ctrl.quote.selection.glass" class="form-control">
+                  <option value="">不投保</option>
+                  <option value="1">国产玻璃</option>
+                  <option value="2">进口玻璃</option>
+                </select>
+              </td>
+              <td></td>
+              <td ng-repeat="(supplier, value) in ctrl.result"><lcb-json-table json="ctrl.getQuoteDetail(value.data, 'glass')"></lcb-json-table></td>
+            </tr>
+            <tr>
+              <td>划痕险</td>
+              <td>
+                <select id="scratch" ng-model="ctrl.quote.selection.scratch" class="form-control">
+                  <option value="">不投保</option>
+                  <option>2000</option>
+                  <option>5000</option>
+                  <option>10000</option>
+                  <option>20000</option>
+                </select>
+              </td>
+              <td><input id="exempt_scratch" ng-model="ctrl.quote.selection.exempt_scratch" type="checkbox"></td>
+              <td ng-repeat="(supplier, value) in ctrl.result"><lcb-json-table json="ctrl.getQuoteDetail(value.data, 'scratch')"></lcb-json-table><lcb-json-table json="ctrl.getQuoteDetail(value.data, 'exempt_scratch')"></lcb-json-table></td>
+            </tr>
+            <tr>
+              <td>自燃险</td>
+              <td><input id="combust" ng-model="ctrl.quote.selection.combust" type="checkbox"></td>
+              <td><input id="exempt_combust" ng-model="ctrl.quote.selection.exempt_combust" type="checkbox"></td>
+              <td ng-repeat="(supplier, value) in ctrl.result"><lcb-json-table json="ctrl.getQuoteDetail(value.data, 'combust')"></lcb-json-table><lcb-json-table json="ctrl.getQuoteDetail(value.data, 'exempt_combust')"></lcb-json-table></td>
+            </tr>
+            <tr>
+              <td>涉水险</td>
+              <td><input id="water" ng-model="ctrl.quote.selection.water" type="checkbox"></td>
+              <td><input id="exempt_water" ng-model="ctrl.quote.selection.exempt_water" type="checkbox"></td>
+              <td ng-repeat="(supplier, value) in ctrl.result"><lcb-json-table json="ctrl.getQuoteDetail(value.data, 'water')"></lcb-json-table><lcb-json-table json="ctrl.getQuoteDetail(value.data, 'exempt_water')"></lcb-json-table></td>
+            </tr>
+            <tr>
+              <td>指定修理厂险</td>
+              <td><input id="factory" ng-model="ctrl.quote.selection.factory" type="checkbox"></td>
+              <td></td>
+              <td ng-repeat="(supplier, value) in ctrl.result"><lcb-json-table json="ctrl.getQuoteDetail(value.data, 'factory')"></lcb-json-table></td>
+            </tr>
+            <tr>
+              <td>精神损害抚慰金</td>
+              <td>
+                <select id="spirit" ng-model="ctrl.quote.selection.spirit" class="form-control">
+                  <option value="">不投保</option>
+                  <option>10000</option>
+                  <option>20000</option>
+                  <option>30000</option>
+                  <option>40000</option>
+                  <option>50000</option>
+                </select>
+              </td>
+              <td><input id="exempt_spirit" ng-model="ctrl.quote.selection.exempt_spirit" type="checkbox"></td>
+              <td ng-repeat="(supplier, value) in ctrl.result"><lcb-json-table json="ctrl.getQuoteDetail(value.data, 'spirit')"></lcb-json-table><lcb-json-table json="ctrl.getQuoteDetail(value.data, 'exempt_spirit')"></lcb-json-table></td>
+            </tr>
+            <tr>
+              <td>修理期费用补偿</td>
+              <td>
+                <select id="repair" ng-model="ctrl.quote.selection.repair" class="form-control">
+                  <option value="">不投保</option>
+                  <option>100</option>
+                  <option>200</option>
+                  <option>300</option>
+                </select>
+              </td>
+              <td></td>
+              <td ng-repeat="(supplier, value) in ctrl.result"><lcb-json-table json="ctrl.getQuoteDetail(value.data, 'repair')"></lcb-json-table></td>
+            </tr>
+            <tr class="lcb-summary">
+              <td>上年出险信息</td>
+              <td></td>
+              <td></td>
+              <td ng-repeat="(supplier, value) in ctrl.result">
+                <div ng-repeat="pay in value.data.biz_info.pay_list"><lcb-json-table json="pay"></lcb-json-table></div>
+              </td>
+            </tr>
+            <tr class="lcb-summary">
+              <td>支付信息</td>
+              <td></td>
+              <td></td>
+              <td ng-repeat="(supplier, value) in ctrl.result"><lcb-json-table json="value.pay_info"></lcb-json-table></td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+
+  </form>
+
+  <div id="result" class="panel panel-default" ng-if="ctrl.result">
+    <div class="panel-heading">
+      <h3 class="panel-title">报价结果</h3>
+    </div>
+    <div class="panel-body">
+      <pre pretty-json="ctrl.result"></pre>
+    </div>
+  </div>
+
+</div>
